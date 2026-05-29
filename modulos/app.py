@@ -1,11 +1,3 @@
-from modulos.prints import mensaje_inicial
-from modulos.login import iniciar_sesion
-from modulos.menus import (
-    menu_cliente,
-    menu_restaurante,
-    menu_admin
-)
-
 """ Módulo principal de ejecución de la aplicación.
 
 Se encarga de controlar el flujo general del sistema:
@@ -15,7 +7,16 @@ Se encarga de controlar el flujo general del sistema:
 - dirigir al menú correspondiente
 """
 
-def iniciar_app():
+from modulos.prints import mensaje_inicial
+from modulos.login import iniciar_sesion
+from modulos.menus import (
+    menu_cliente,
+    menu_restaurante,
+    menu_admin
+)
+
+
+def iniciar_app():    #Inicia el flujo principal del sistema.
 
     mensaje_inicial()
 
