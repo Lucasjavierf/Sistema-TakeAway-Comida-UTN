@@ -13,3 +13,21 @@ def mensaje_inicial():
     print('Este sistema permite realizar pedidos de comida entre clientes y restaurantes.')    
 
 
+#Menus Roles 
+
+def print_menu_cliente():
+    print("1. Ver datos")
+    print("2. Realizar pedido")
+    print("3. Salir")
+    
+def print_menu_restaurante():
+    print("1. Ver datos")
+    print("2. Preparar pedido")
+    print("3. Entregar pedido")
+    print("4. Salir")
+
+def print_menu_admin():
+    print("1. Crear usuario")
+    print("2. Borrar usuario")
+    print("3. Ver información")
+    print("4. Salir")
