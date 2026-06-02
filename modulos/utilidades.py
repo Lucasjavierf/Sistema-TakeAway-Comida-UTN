@@ -9,15 +9,12 @@ def limpiar_pantalla():
     """Limpia la consola."""
     os.system("cls" if os.name == "nt" else "clear")
 
-    pass
 
 
 def pausar(mensaje = "Presiona enter para continuar..."):
     """Pausa la ejecución."""
 
     input(f"\n{mensaje}")
-
-    pass
 
 
 def generar_numero_pedido():
@@ -26,5 +23,3 @@ def generar_numero_pedido():
     fin = 9999999999999
 
     return random.randint(inicio, fin)
-
-    pass

@@ -50,3 +50,5 @@ Datos_int_cliente = [
     25000,  # gasto total
     3000    # ultimo pedido
 ]
+
+pedido_actual = None
