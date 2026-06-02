@@ -22,8 +22,7 @@ def pausar(mensaje = "Presiona enter para continuar..."):
 
 def generar_numero_pedido():
     """Genera un número de pedido aleatorio."""
-    inicio = 1000000000000000
-   
+    inicio = 1000000000000
     fin = 9999999999999
 
     return random.randint(inicio, fin)

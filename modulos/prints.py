@@ -31,3 +31,7 @@ def print_menu_admin():
     print("2. Borrar usuario")
     print("3. Ver información")
     print("4. Salir")
+
+def lista_restaurantes():
+    print("RestoUTN")
+    print("MinutasAV")

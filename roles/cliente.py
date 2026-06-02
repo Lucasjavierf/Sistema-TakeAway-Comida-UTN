@@ -1,5 +1,6 @@
 from modulos.datos import *
-
+from modulos.validaciones import *
+from modulos.prints import *
 
 """
 Funciones correspondientes al rol cliente.
@@ -17,6 +18,7 @@ def ver_datos_cliente():
     print(f"Cantidad de pedidos hechos: {Datos_int_cliente[0]}")
     print(f"Gasto total: ${Datos_int_cliente[1]}")
     print(f"Descuento total obtenido: ${Datos_int_cliente[2]}")
+    esperar_menu()
 
 def ver_menu_comidas():
     """Muestra el menú de comidas disponibles."""
@@ -40,9 +42,13 @@ def seleccionar_comida():
     ver_menu_comidas()
     comida_seleccionada = None
     while comida_seleccionada == None:
-        opcion = int(input("Elija el número de la comida que desea: "))    
-        if opcion > 0 and opcion <= len(Menu_comidas):
-            comida_seleccionada = Menu_comidas[opcion - 1]
+        opcion = input("Elija el número de la comida que desea: ")   
+        if verificar_numero_entero(opcion) == True: 
+            opcion = int(opcion)
+            if opcion > 0 and opcion <= len(Menu_comidas):
+                comida_seleccionada = Menu_comidas[opcion - 1]
+            else:
+                print("Opción no válida. Por favor, intente nuevamente.")
         else:
             print("Opción no válida. Por favor, intente nuevamente.")
     return comida_seleccionada
@@ -53,13 +59,17 @@ def seleccionar_bebida():
     ver_menu_bebidas()
     bebida_seleccionada = None
     while bebida_seleccionada == None:
-        opcion = int(input("Elija el número de la bebida que desea: ")) 
-        if opcion == 0:
-            bebida_seleccionada = "Sin bebida"
-        elif opcion > 0 and opcion <= len(Menu_bebidas):
-                bebida_seleccionada = Menu_bebidas[opcion - 1]
-        else:
+        opcion = input("Elija el número de la bebida que desea: ")
+        if verificar_numero_entero(opcion) == True:
+            opcion = int(opcion)
+            if opcion == 0:
+                bebida_seleccionada = "Sin bebida"
+            elif opcion > 0 and opcion <= len(Menu_bebidas):
+                    bebida_seleccionada = Menu_bebidas[opcion - 1]
+            else:
                 print("Opción no válida. Por favor, intente nuevamente.")
+        else:
+            print("Opción no válida. Por favor, intente nuevamente.")
     return bebida_seleccionada
 
 
@@ -67,9 +77,10 @@ def seleccionar_bebida():
 def realizar_pedido():
     
     """Gestiona el flujo principal de un pedido."""
-    print("Realizar Pedido:")
+    print("Realizar Pedido: Ingrese el nombre del restaurante al que desea pedir")
     while True:
-        restaurante = input("Ingrese el nombre del restaurante al que desea pedir: ")
+        lista_restaurantes()
+        restaurante = input("")
         if len(restaurante) >= 3:
             break
         else:
@@ -77,17 +88,21 @@ def realizar_pedido():
         
     datos_comida = seleccionar_comida()
     while True:
-        unidades_comida_pedidas = int(input("Ingrese la cantidad de unidades que desea pedir: "))
-        if unidades_comida_pedidas > 0 and unidades_comida_pedidas <= 10:
-            break
+        unidades_comida_pedidas = input("Ingrese la cantidad de unidades que desea pedir: ")
+        if verificar_numero_entero(unidades_comida_pedidas) == True:
+            unidades_comida_pedidas = int(unidades_comida_pedidas)
+            if unidades_comida_pedidas > 0 and unidades_comida_pedidas <= 10:
+                break
         else:
             print("La cantidad de unidades debe ser un número entre 1 y 10. Por favor, intente nuevamente.")
     datos_bebida = seleccionar_bebida()
     if datos_bebida != "Sin bebida":
         while True:
-            unidades_bebida_pedidas = int(input("Ingrese la cantidad de unidades que desea pedir: "))   
-            if unidades_bebida_pedidas >= 0 and unidades_bebida_pedidas <= 10:
-                break
+            unidades_bebida_pedidas = input("Ingrese la cantidad de unidades que desea pedir: ")
+            if verificar_numero_entero(unidades_bebida_pedidas) == True:
+                unidades_bebida_pedidas = int(unidades_bebida_pedidas)
+                if unidades_bebida_pedidas >= 0 and unidades_bebida_pedidas <= 10:
+                    break
             else:
                 print("La cantidad de unidades debe ser un número entre 0 y 10. Por favor, intente nuevamente.")
     else:
@@ -95,6 +110,7 @@ def realizar_pedido():
     total_pedido = calcular_total(datos_comida, unidades_comida_pedidas, datos_bebida, unidades_bebida_pedidas)
     datos_finales_pedido = [restaurante, datos_comida, unidades_comida_pedidas, datos_bebida, unidades_bebida_pedidas, total_pedido]
     confirmar_pedido(datos_finales_pedido)
+    esperar_menu()
     return datos_finales_pedido
 
     

@@ -122,8 +122,6 @@ def crear_usuario():
  
 
 
-    pass
-
 
 def borrar_usuario():
     """Simula el borrado de un usuario."""
@@ -132,20 +130,6 @@ def borrar_usuario():
     nombre = pedir_nombre_usuario()
     print(f"\n Usuario '{nombre}' eliminado del sistema exitosamente.")
     pausar()
-    pass
-
-
-def modificar_usuario():
-    """Simula la modificación de un usuario."""
-
-
-    pass
-
-
-def ver_usuarios():
-    """Muestra los usuarios registrados."""
-
-    pass
 
 
 def ver_info_sistema():
@@ -162,28 +146,3 @@ def ver_info_sistema():
     print(funcionalidades_extras)
     pausar()
 
-def menu_administrador():
-    """Muestra y gestiona el menú del rol Administrador."""
-    while True:
-        limpiar_pantalla()
-        print("menú administrador")
-        print("  1. Crear usuario")
-        print("  2. Borrar usuario")
-        print("  3. Ver información del sistema")
-        print("  0. Cerrar sesión")
- 
-        opcion = input("\n  Elegí una opción: ")
- 
-        if opcion == "1":
-            crear_usuario()
-        elif opcion == "2":
-            borrar_usuario()
-        elif opcion == "3":
-            ver_info_sistema()
-        elif opcion == "0":
-            print("\n Sesión cerrada. ¡Hasta luego!")
-            break
-        else:
-            print("\n Opción inválida. Intentá de nuevo.")
-            pausar()
-    pass

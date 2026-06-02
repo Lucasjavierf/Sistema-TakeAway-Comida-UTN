@@ -12,7 +12,7 @@ from modulos.login import iniciar_sesion
 from modulos.menus import (
     menu_cliente,
     menu_restaurante,
-    menu_admin
+    menu_administrador
 )
 
 
@@ -31,7 +31,7 @@ def iniciar_app():    #Inicia el flujo principal del sistema.
             menu_restaurante()
 
         case "admin":
-            menu_admin()
+            menu_administrador()
 
         case _:
             print("Error: rol no reconocido")

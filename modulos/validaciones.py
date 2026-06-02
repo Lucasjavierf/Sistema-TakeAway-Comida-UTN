@@ -1,3 +1,4 @@
+import os
 """
 Funciones reutilizables de validación.
 Acá centralizamos TODAS las validaciones.
@@ -40,9 +41,35 @@ def validar_numero_rango(numero, minimo, maximo):
     return True
 
 
-def validar_codigo_entrega(codigo):
-    """Valida un código de entrega."""
-    if len(codigo) == 4 and codigo == "1234":
-        return True
 
-    return False
+def verificar_numero_entero(numero:str) -> bool:
+    """Verifica si el numero ingresado es entero comparandolo con los valores ascii validos.
+
+    Args:
+        numero (str): Numero ingresado por el usuario
+
+    Returns:
+        bool: True si el numero es entero, False en caso contrario.
+    """
+    if len(numero) > 0:
+        bandera_valido = True
+        for i in range(len(numero)):
+            caracter = numero[i]
+            ascii_caracter = ord(caracter)
+            if ascii_caracter < 48 or ascii_caracter > 57 and (i != 0 or caracter != '-'):
+                bandera_valido = False
+                break
+    else:
+        bandera_valido = False
+
+    return bandera_valido
+
+
+def esperar_menu() -> None:
+    """Borra lo que hay en la terminal y pone un input como pausa.
+    """
+    input("Ingresa enter para continuar...")
+    if os.name == 'nt':
+        os.system('cls')
+    else:
+        os.system('clear')

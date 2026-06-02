@@ -26,19 +26,27 @@ usuarios = [
     }
 ]
 
-
-
-Domicilio_cliente = "Avenida Mitre 750, CABA"
-
-Datos_string_cliente = ["Nombre: Lionel Messi", "Usuario: clienteA", "Forma de pago mas usada: efectivo", "Modalidad de pedido mas usada: para llevar"]
-
-Datos_int_cliente = [5, 30000, 5000]#cantidad de pedidos hechos, gasto total, descuento total obtenido. 
-
 Menu_comidas = ["pizza", "hamburguesa", "milanesa"]
 precio_comidas = [5000, 3000, 4000]
 Menu_bebidas = ["coca-cola", "sprite", "agua"]
 precio_bebidas = [1500, 1500, 1000]
 
+datos_restaurante = ["Resto UTN", "Medrano 951", "comida rápida", "11-4444-9876", 15, 8, 250000.0]
 
 
 
+#Datos de cliente
+Domicilio_cliente = "Av. Siempre Viva 742"
+
+Datos_string_cliente = [
+    "Nombre: clienteA",
+    "Apellido: Krauz",
+    "Email: cleinteA@gmail.com",
+    "Telefono: 11-1234-5678"
+]
+
+Datos_int_cliente = [
+    5,      # cantidad pedidos
+    25000,  # gasto total
+    3000    # ultimo pedido
+]
