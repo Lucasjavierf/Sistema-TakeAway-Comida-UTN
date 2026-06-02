@@ -2,12 +2,13 @@
 Funciones correspondientes al rol administrador.
 """
 from modulos.utilidades import *
+import modulos.datos as datos
 
 integrantes = [
-    "Persona 1 — Coordinación e integración",
-    "Persona 2 — Login, validaciones y datos",
-    "Persona 3 — Cliente y menús",
-    "Persona 4 — Restaurante, administrador y utilidades",
+    "Fernandez Lucas Javier— Coordinación e integración",
+    "Ferrari Renzo Damián — Login, validaciones y datos",
+    "Kraus Matias — Cliente y menús",
+    "Araujo Juan Ignacio — Restaurante, administrador y utilidades",
 ]
 
 
@@ -43,21 +44,20 @@ funcionalidades_extras = """
       • Actualizar el menú disponible
 """
 
-
 def validar_longitud(texto, minimo):
     """Devuelve True si el texto tiene al menos 'minimo' caracteres."""
-    if len(texto) >= minimo:
-        return True
-    return False
-
+    return len(texto) >= minimo
+ 
+ 
 def pedir_nombre_usuario():
     """Solicita un nombre de usuario válido (mínimo 3 caracteres)."""
     while True:
         nombre = input("\n  Nombre de usuario (mín. 3 caracteres): ")
         if validar_longitud(nombre, 3):
             return nombre
-        print(" El nombre debe tener al menos 3 caracteres.")
-
+        print("  El nombre debe tener al menos 3 caracteres.")
+ 
+ 
 def pedir_contrasena():
     """Solicita una contraseña válida (mínimo 6 caracteres)."""
     while True:
@@ -65,15 +65,26 @@ def pedir_contrasena():
         if validar_longitud(contrasena, 6):
             return contrasena
         print("  La contraseña debe tener al menos 6 caracteres.")
-
+ 
+ 
 def pedir_rol():
     """Solicita que se elija un rol: cliente o restaurante."""
     while True:
         rol = input("  Rol (cliente / restaurante): ")
         if rol in ("cliente", "restaurante"):
             return rol
-        print(" Rol inválido. Escribí 'cliente' o 'restaurante'.")
-
+        print("  Rol inválido. Escribí 'cliente' o 'restaurante'.")
+ 
+ 
+def pedir_domicilio():
+    """Solicita un domicilio válido (mínimo 7 caracteres)."""
+    while True:
+        domicilio = input("    Domicilio (mín. 7 caracteres): ")
+        if validar_longitud(domicilio, 7):
+            return domicilio
+        print("  El domicilio debe tener al menos 7 caracteres.")
+ 
+ 
 def pedir_datos_restaurante():
     """Solicita los datos básicos de un nuevo restaurante."""
     print("\n  Completá los datos del restaurante:")
@@ -82,67 +93,90 @@ def pedir_datos_restaurante():
     telefono    = input("    Teléfono           : ")
     domicilio   = pedir_domicilio()
     print(f"\n  Datos registrados para el restaurante '{nombre}'.")
-
+ 
+ 
 def pedir_datos_cliente():
     """Solicita los datos básicos de un nuevo cliente."""
     print("\n  Completá los datos del cliente:")
-    nombre      = input("    Nombre completo    : ")
-    apellido    = input("    Apellido           : ")
-    email       = input("    Email              : ")
-    telefono    = input("    Teléfono           : ")
-    domicilio   = pedir_domicilio()
+    nombre   = input("    Nombre completo    : ")
+    apellido = input("    Apellido           : ")
+    email    = input("    Email              : ")
+    telefono = input("    Teléfono           : ")
+    domicilio = pedir_domicilio()
     print(f"\n  Datos registrados para el cliente '{nombre} {apellido}'.")
-
-def pedir_domicilio():
-    """Solicita un domicilio válido (mínimo 7 caracteres)."""
-    while True:
-        domicilio = input("    Domicilio (mín. 7 caracteres): ")
-        if validar_longitud(domicilio, 7):
-            return domicilio
-        print(" El domicilio debe tener al menos 7 caracteres.")
-
+ 
+ 
+def usuario_existe(nombre):
+    """Devuelve True si ya existe un usuario con ese nombre."""
+    for user in datos.usuarios:
+        if user["usuario"] == nombre:
+            return True
+    return False
+ 
+ 
 def crear_usuario():
-    """Simula la creación de un usuario."""
-    print("Crear usuario")
-    nombre = pedir_nombre_usuario()
-    contraseña = pedir_contrasena()
+    """Crea un nuevo usuario y lo agrega a la lista de usuarios."""
+    print("\nCrear usuario")
+ 
+    while True:
+        nombre = pedir_nombre_usuario()
+        if usuario_existe(nombre):
+            print(f"  Error: el usuario '{nombre}' ya existe. Elegí otro nombre.")
+        else:
+            break
+ 
+    contrasena = pedir_contrasena()
     rol = pedir_rol()
-
-    print(f"\n Datos del nuevo usuario")
-    print(f"   Nombre  : {nombre}")
-    print(f"   Rol  :  {rol}")
-
+ 
+    nuevo_usuario = {
+        "usuario": nombre,
+        "password": contrasena,
+        "rol": rol
+    }
+    datos.usuarios.append(nuevo_usuario)
+ 
+    print(f"\n  Datos del nuevo usuario:")
+    print(f"    Nombre : {nombre}")
+    print(f"    Rol    : {rol}")
+ 
     if rol == "cliente":
         pedir_datos_cliente()
     else:
         pedir_datos_restaurante()
-    
-    print("\n Usuario creado exitosamente.")
+ 
+    print(f"\n  Usuario '{nombre}' creado exitosamente.")
     pausar()
  
-
-
-
+ 
 def borrar_usuario():
-    """Simula el borrado de un usuario."""
-    print("borrar usuario")
+    """Borra un usuario existente de la lista."""
+    print("\nBorrar usuario")
  
     nombre = pedir_nombre_usuario()
-    print(f"\n Usuario '{nombre}' eliminado del sistema exitosamente.")
+ 
+    for i in range(len(datos.usuarios)):
+        if datos.usuarios[i]["usuario"] == nombre:
+            if datos.usuarios[i]["rol"] == "admin":
+                print("  Error: no se puede eliminar una cuenta de administrador.")
+                pausar()
+                return
+            datos.usuarios.pop(i)
+            print(f"\n  Usuario '{nombre}' eliminado exitosamente.")
+            pausar()
+            return
+ 
+    print(f"\n  Error: no existe ningún usuario con el nombre '{nombre}'.")
     pausar()
-
-
+ 
+ 
 def ver_info_sistema():
     """Muestra información general del sistema."""
-    print("Información del sistema")
+    print("\nInformación del sistema")
  
     print("\n  Integrantes del grupo:")
-    print(f"     • {integrantes[0]}")
-    print(f"     • {integrantes[1]}")
-    print(f"     • {integrantes[2]}")
-    print(f"     • {integrantes[3]}")
-
+    for integrante in integrantes:
+        print(f"     • {integrante}")
+ 
     print(descripcion_sistema)
     print(funcionalidades_extras)
     pausar()
-
