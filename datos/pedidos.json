@@ -1,0 +1,41 @@
+[
+    {
+        "numero": 1234567890123,
+        "codigo_entrega": null,
+        "cliente": "clienteA",
+        "restaurante": "mcdonald",
+        "comida": "Hamburguesa clasica",
+        "cantidad_comida": 2,
+        "bebida": "Coca-Cola",
+        "cantidad_bebida": 2,
+        "total": 9400.0,
+        "estado": "pendiente",
+        "fecha": "2025-06-01"
+    },
+    {
+        "numero": 9876543210987,
+        "codigo_entrega": 4521,
+        "cliente": "clienteB",
+        "restaurante": "mcdonald",
+        "comida": "Nuggets x6",
+        "cantidad_comida": 1,
+        "bebida": "ninguna",
+        "cantidad_bebida": 0,
+        "total": 2500.0,
+        "estado": "en_preparacion",
+        "fecha": "2025-06-01"
+    },
+    {
+        "numero": 5555444433332,
+        "codigo_entrega": 7890,
+        "cliente": "clienteA",
+        "restaurante": "laparolaccia",
+        "comida": "Pizza mozzarella",
+        "cantidad_comida": 1,
+        "bebida": "Limonada",
+        "cantidad_bebida": 2,
+        "total": 7000.0,
+        "estado": "entregado",
+        "fecha": "2025-05-30"
+    }
+]

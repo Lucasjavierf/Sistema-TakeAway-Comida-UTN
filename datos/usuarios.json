@@ -1,0 +1,60 @@
+[
+    {
+        "usuario": "clienteA",
+        "password": "tengohambre123",
+        "rol": "Cliente",
+        "domicilio": "Av. Siempre Viva 742",
+        "nombre": "Lucas",
+        "apellido": "Krauz",
+        "email": "clienteA@gmail.com",
+        "telefono": "11-1234-5678",
+        "dni": 38012345,
+        "edad": 22,
+        "cantidad_pedidos": 5
+    },
+    {
+        "usuario": "clienteB",
+        "password": "meencantacomer1",
+        "rol": "Cliente",
+        "domicilio": "Calle Falsa 123",
+        "nombre": "Maria",
+        "apellido": "Lopez",
+        "email": "marialopez@gmail.com",
+        "telefono": "11-8765-4321",
+        "dni": 40123456,
+        "edad": 25,
+        "cantidad_pedidos": 2
+    },
+    {
+        "usuario": "mcdonald",
+        "password": "cajitafeliz7",
+        "rol": "Restaurante",
+        "domicilio": "Medrano 951",
+        "nombre_local": "McDonald's UTN",
+        "tipo_cocina": "comida rapida",
+        "telefono": "11-4444-9876",
+        "pedidos_hoy": 15,
+        "empleados": 8,
+        "facturacion": 250000.0
+    },
+    {
+        "usuario": "laparolaccia",
+        "password": "pasta2024",
+        "rol": "Restaurante",
+        "domicilio": "Av. Corrientes 1234",
+        "nombre_local": "La Parolaccia",
+        "tipo_cocina": "italiana",
+        "telefono": "11-5555-1234",
+        "pedidos_hoy": 9,
+        "empleados": 5,
+        "facturacion": 180000.0
+    },
+    {
+        "usuario": "adminrappi",
+        "password": "admin1234",
+        "rol": "Administrador",
+        "domicilio": "Av. del Libertador 500",
+        "nombre": "Admin",
+        "apellido": "Sistema"
+    }
+]

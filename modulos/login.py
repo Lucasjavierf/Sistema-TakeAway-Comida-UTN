@@ -1,21 +1,28 @@
 """
 Funciones relacionadas al inicio de sesión.
-
-Ahí:
-pedís usuario, pedís contraseña, validás longitud, verificás usuarios, devolvés el rol, etc...
 """
-from modulos.validaciones import *
-from modulos.datos import usuarios
-def iniciar_sesion():
+from modulos.validaciones import validar_usuario, validar_password
+from modulos.funciones import buscar_usuario
+import modulos.datos as datos
+
+
+def iniciar_sesion() -> dict:
+    """Solicita credenciales y devuelve el diccionario completo del usuario logueado.
+
+    Returns:
+        dict: Diccionario del usuario autenticado.
+    """
     while True:
-        usuario = input("Ingrese usuario: ")
-        
-        if validar_usuario(usuario):
+        nombre = input("Ingrese usuario: ")
+
+        if validar_usuario(nombre):
             password = input("Ingrese contraseña: ")
+
             if validar_password(password):
-                for user in usuarios:
-                    if user["usuario"] == usuario and user["password"] == password:
-                        print(f"Bienvenido {usuario}!")
-                        return user["rol"]
-                
-                print("Error: Usuario o contraseña incorrectos.")
+                usuario = buscar_usuario(datos.usuarios, nombre)
+
+                if usuario is not None and usuario["password"] == password:
+                    print(f"\nBienvenido, {nombre}!")
+                    return usuario
+
+                print("Error: usuario o contraseña incorrectos.")

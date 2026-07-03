@@ -1,0 +1,14 @@
+[
+    { "restaurante": "mcdonald", "nombre": "Hamburguesa clasica", "categoria": "comida", "precio": 3500.0 },
+    { "restaurante": "mcdonald", "nombre": "Papas fritas", "categoria": "comida", "precio": 1800.0 },
+    { "restaurante": "mcdonald", "nombre": "Nuggets x6", "categoria": "comida", "precio": 2500.0 },
+    { "restaurante": "mcdonald", "nombre": "Coca-Cola", "categoria": "bebida", "precio": 1200.0 },
+    { "restaurante": "mcdonald", "nombre": "Sprite", "categoria": "bebida", "precio": 1200.0 },
+    { "restaurante": "mcdonald", "nombre": "Agua mineral", "categoria": "bebida", "precio": 800.0 },
+    { "restaurante": "laparolaccia", "nombre": "Pasta al pomodoro", "categoria": "comida", "precio": 4200.0 },
+    { "restaurante": "laparolaccia", "nombre": "Milanesa napolitana", "categoria": "comida", "precio": 5000.0 },
+    { "restaurante": "laparolaccia", "nombre": "Pizza mozzarella", "categoria": "comida", "precio": 4800.0 },
+    { "restaurante": "laparolaccia", "nombre": "Vino tinto (copa)", "categoria": "bebida", "precio": 1800.0 },
+    { "restaurante": "laparolaccia", "nombre": "Agua con gas", "categoria": "bebida", "precio": 900.0 },
+    { "restaurante": "laparolaccia", "nombre": "Limonada", "categoria": "bebida", "precio": 1100.0 }
+]

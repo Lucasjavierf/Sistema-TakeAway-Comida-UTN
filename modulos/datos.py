@@ -1,54 +1,50 @@
 """
-Datos hardcodeados del sistema.
+Módulo de carga y persistencia de datos.
 
-También:
-menú de comidas, bebidas, datos del cliente, datos del restaurante, etc...
+Maneja la lectura y escritura de los archivos JSON del sistema.
+Al importar este módulo, todas las listas quedan cargadas en memoria
+y disponibles para el resto de los módulos.
 """
 
+import json
+import os
 
-usuarios = [
-    {
-        "usuario": "clienteA",
-        "password": "tengohambre123",
-        "rol": "cliente"
-    },
-
-    {
-        "usuario": "mcdonald",
-        "password": "cajitafeliz7",
-        "rol": "restaurante"
-    },
-
-    {
-        "usuario": "adminrappi",
-        "password": "admin1234",
-        "rol": "admin"
-    }
-]
-
-Menu_comidas = ["pizza", "hamburguesa", "milanesa"]
-precio_comidas = [5000, 3000, 4000]
-Menu_bebidas = ["coca-cola", "sprite", "agua"]
-precio_bebidas = [1500, 1500, 1000]
-
-datos_restaurante = ["Resto UTN", "Medrano 951", "comida rápida", "11-4444-9876", 15, 8, 250000.0]
+# Rutas de los archivos JSON
+RUTA_USUARIOS   = os.path.join("datos", "usuarios.json")
+RUTA_CATALOGO   = os.path.join("datos", "catalogo.json")
+RUTA_PEDIDOS    = os.path.join("datos", "pedidos.json")
+RUTA_ELIMINADOS = os.path.join("datos", "eliminados.json")
 
 
+def cargar_json(ruta: str) -> list:
+    """Carga un archivo JSON y devuelve su contenido como lista de diccionarios.
 
-#Datos de cliente
-Domicilio_cliente = "Av. Siempre Viva 742"
+    Args:
+        ruta (str): Ruta al archivo JSON.
 
-Datos_string_cliente = [
-    "Nombre: clienteA",
-    "Apellido: Krauz",
-    "Email: cleinteA@gmail.com",
-    "Telefono: 11-1234-5678"
-]
+    Returns:
+        list: Lista de diccionarios con los datos del archivo.
+    """
+    archivo = open(ruta, "r", encoding="utf-8")
+    contenido = archivo.read()
+    archivo.close()
+    return json.loads(contenido)
 
-Datos_int_cliente = [
-    5,      # cantidad pedidos
-    25000,  # gasto total
-    3000    # ultimo pedido
-]
 
-pedido_actual = None
+def guardar_json(ruta: str, datos: list) -> None:
+    """Guarda una lista de diccionarios en un archivo JSON.
+
+    Args:
+        ruta (str): Ruta al archivo JSON.
+        datos (list): Lista de diccionarios a guardar.
+    """
+    archivo = open(ruta, "w", encoding="utf-8")
+    archivo.write(json.dumps(datos, indent=4, ensure_ascii=False))
+    archivo.close()
+
+
+# Listas cargadas en memoria al iniciar el programa
+usuarios   = cargar_json(RUTA_USUARIOS)
+catalogo   = cargar_json(RUTA_CATALOGO)
+pedidos    = cargar_json(RUTA_PEDIDOS)
+eliminados = cargar_json(RUTA_ELIMINADOS)
