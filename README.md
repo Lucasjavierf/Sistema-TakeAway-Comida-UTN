@@ -23,26 +23,6 @@ Modularizar el código
 Diferenciar funcionalidades según el rol del usuario
 Simular el flujo básico de un sistema de pedidos
 
-👥 Integrantes :
-
-Estructura del proyecto
-Sistema-TakeAway-Comida-UTN/
-│
-├── main.py
-│
-├── modulos/
-│   ├── administrador.py
-│   ├── cliente.py
-│   ├── restaurante.py
-│   ├── login.py
-│   ├── menus.py
-│   ├── validaciones.py
-│   ├── utilidades.py
-│   ├── datos.py
-│   └── prints.py
-│
-├── README.md
-└── .gitignore
 
 
 
@@ -96,16 +76,6 @@ Funciones reutilizables para validar:
 -códigos
 -domicilios
 -entradas del usuario
-
-
----------------datos.py------------------
-Almacena datos hardcodeados del sistema:
-
--usuarios
--comidas
--bebidas
--datos de clientes
--datos de restaurantes
 
 
 -------------utilidades.py------------
