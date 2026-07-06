@@ -7,13 +7,12 @@ y disponibles para el resto de los módulos.
 """
 
 import json
-import os
 
 # Rutas de los archivos JSON
-RUTA_USUARIOS   = os.path.join("datos", "usuarios.json")
-RUTA_CATALOGO   = os.path.join("datos", "catalogo.json")
-RUTA_PEDIDOS    = os.path.join("datos", "pedidos.json")
-RUTA_ELIMINADOS = os.path.join("datos", "eliminados.json")
+RUTA_USUARIOS   = "datos/usuarios.json"
+RUTA_CATALOGO   = "datos/catalogo.json"
+RUTA_PEDIDOS    = "datos/pedidos.json"
+RUTA_ELIMINADOS = "datos/eliminados.json"
 
 
 def cargar_json(ruta: str) -> list:
