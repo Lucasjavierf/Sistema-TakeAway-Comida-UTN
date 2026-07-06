@@ -1,13 +1,10 @@
 import os
-"""
-Funciones reutilizables de validación.
-Acá centralizamos TODAS las validaciones.
-
-Este archivo va a ahorrar muchísimo código repetido.
-"""
 
 def validar_usuario(usuario):
-    """Valida un nombre de usuario."""
+    """
+    Valida un nombre de usuario.
+    
+    """
     if len(usuario) < 3 or len(usuario) > 15:
         print("Error: El nombre de usuario debe tener entre 3 y 15 caracteres.")
         return False
@@ -16,7 +13,10 @@ def validar_usuario(usuario):
 
 
 def validar_password(password):
-    """Valida una contraseña."""
+    """
+    Valida una contraseña.
+    
+    """
     if len(password) < 6 or len(password) > 15:
         print("Error: La contraseña debe tener entre 6 y 15 caracteres.")
         return False
@@ -25,7 +25,10 @@ def validar_password(password):
 
 
 def validar_domicilio(domicilio):
-    """Valida un domicilio."""
+    """
+    Valida un domicilio.
+    
+    """
     if len(domicilio) < 7   or len(domicilio) > 30:
         print("Error: El domicilio debe tener entre 7 y 30 caracteres.")
         return False
@@ -34,7 +37,10 @@ def validar_domicilio(domicilio):
 
 
 def validar_numero_rango(numero, minimo, maximo):
-    """Valida un rango numérico."""
+    """
+    Valida un rango numérico.
+    
+    """
     if numero < minimo or numero > maximo:
         print(f"Error: El número debe estar entre {minimo} y {maximo}.")
         return False
@@ -66,8 +72,10 @@ def verificar_numero_entero(numero:str) -> bool:
 
 
 def esperar_menu() -> None:
-    """Borra lo que hay en la terminal y pone un input como pausa.
     """
+    Borra lo que hay en la terminal y pone un input como pausa.
+    """
+    
     input("Ingresa enter para continuar...")
     if os.name == 'nt':
         os.system('cls')

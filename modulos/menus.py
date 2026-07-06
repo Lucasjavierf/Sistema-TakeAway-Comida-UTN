@@ -2,17 +2,10 @@
 Solo muestra y controla menús.
 Recibe el usuario logueado y lo pasa a las funciones de cada rol.
 """
-from roles.cliente import (
-    realizar_pedido, ver_datos_cliente, ver_pedidos_en_preparacion
-)
-from roles.restaurante import (
-    ver_datos_restaurante, preparar_pedido, entregar_pedido, ver_facturacion
-)
-from roles.administrador import (
-    crear_usuario, borrar_usuario, ver_info_sistema
-)
-from modulos.utilidades import limpiar_pantalla, pausar
-from modulos.validaciones import esperar_menu
+from roles.cliente import *
+from roles.restaurante import *
+from roles.administrador import *
+from modulos.utilidades import *
 import modulos.datos as datos
 
 

@@ -1,7 +1,3 @@
-'''
-Funciones auxiliares reutilizables.
-Ejemplos:
-'''
 import os
 import random
 

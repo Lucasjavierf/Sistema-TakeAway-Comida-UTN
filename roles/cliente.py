@@ -1,6 +1,6 @@
 import modulos.datos as datos
 from modulos.datos import guardar_json, RUTA_PEDIDOS
-from modulos.funciones import filtrar_catalogo, calcular_total_pedido, buscar_usuario
+from modulos.funciones import filtrar_catalogo, calcular_total_pedido, buscar_usuario, filtrar_por_rol
 from modulos.validaciones import verificar_numero_entero, esperar_menu
 from modulos.utilidades import generar_numero_pedido, generar_codigo_entrega, pausar
 
@@ -95,9 +95,14 @@ def generar_numero_unico(pedidos:list, tipo_de_numero:str) -> int:
 def realizar_pedido(usuario:dict, catalogo:list, pedidos:list) -> dict:
     
     """Gestiona el flujo principal de un pedido."""
-    print("Realizar Pedido: Ingrese el nombre del restaurante al que desea pedir")
+    print("Realizar Pedido:")
+    print("\n  Restaurantes disponibles:")
+    restaurantes_disponibles = filtrar_por_rol(datos.usuarios, "Restaurante")
+    for rest in restaurantes_disponibles:
+        print(f"    \u2022 {rest['usuario']} \u2014 {rest['nombre_local']}")
+    print()
     while True:
-        nombre_restaurante = input("Nombre del restaurante: ")
+        nombre_restaurante = input("Ingrese el nombre de usuario del restaurante: ")
         if len(nombre_restaurante) >= 3:
             break
         else:
@@ -173,4 +178,3 @@ def ver_pedidos_en_preparacion(usuario:dict, pedidos:list):
             print(f"Total: ${pedido['total']}")
             print("\n")
     pausar()
-

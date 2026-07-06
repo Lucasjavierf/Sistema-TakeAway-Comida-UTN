@@ -1,7 +1,7 @@
 [
     {
         "numero": 1234567890123,
-        "codigo_entrega": null,
+        "codigo_entrega": 8829,
         "cliente": "clienteA",
         "restaurante": "mcdonald",
         "comida": "Hamburguesa clasica",
@@ -9,7 +9,7 @@
         "bebida": "Coca-Cola",
         "cantidad_bebida": 2,
         "total": 9400.0,
-        "estado": "pendiente",
+        "estado": "entregado",
         "fecha": "2025-06-01"
     },
     {
@@ -37,5 +37,18 @@
         "total": 7000.0,
         "estado": "entregado",
         "fecha": "2025-05-30"
+    },
+    {
+        "numero": 2054999273777,
+        "codigo_entrega": 5612,
+        "cliente": "clienteA",
+        "restaurante": "mcdonald",
+        "comida": "Hamburguesa clasica",
+        "cantidad_comida": 1,
+        "bebida": "Coca-Cola",
+        "cantidad_bebida": 1,
+        "total": 4700.0,
+        "estado": "en_preparacion",
+        "fecha": "2025-06-01"
     }
 ]
