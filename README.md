@@ -1,142 +1,119 @@
-# -Sistema-TakeAway-Comida-UTN
-Sistema de Take Away de comida desarrollado en Python para la materia de Programación.
+# Sistema Take Away de Comida - UTN
 
-📌 Descripción:
-UTN Eats es una aplicación por consola que simula el funcionamiento básico de un sistema de pedidos de comida take away.
+## Descripción
 
-El sistema permite la interacción entre distintos tipos de usuarios:
+Sistema desarrollado en Python que simula una plataforma de pedidos Take Away con tres tipos de usuarios: **Cliente**, **Restaurante** y **Administrador**.
 
-Cliente
-Restaurante
-Administrador
+El proyecto fue desarrollado como trabajo práctico para la materia de Programación de la Universidad Tecnológica Nacional (UTN), aplicando programación estructurada, modularización, persistencia mediante archivos JSON y reutilización de funciones.
 
-Cada rol posee funcionalidades y menús propios.
+---
 
-🎯 Objetivo del proyecto
+# Objetivos
 
-El objetivo principal de esta entrega es:
+* Implementar un sistema modular utilizando funciones.
+* Administrar distintos tipos de usuarios según su rol.
+* Persistir la información del sistema mediante archivos JSON.
+* Aplicar validaciones de datos y separación de responsabilidades.
+* Simular el flujo completo de un pedido de comida.
 
-Organizar correctamente un programa en Python
-Utilizar funciones
-Validar datos ingresados por el usuario
-Modularizar el código
-Diferenciar funcionalidades según el rol del usuario
-Simular el flujo básico de un sistema de pedidos
+---
 
-👥 Integrantes :
 
-Estructura del proyecto
+# Estructura del proyecto
+
+```
 Sistema-TakeAway-Comida-UTN/
+
 │
-├── main.py
+├── datos/
+│   ├── catalogo.json
+│   ├── usuarios.json
+│   ├── pedidos.json
+│   └── eliminados.json
 │
 ├── modulos/
-│   ├── administrador.py
-│   ├── cliente.py
-│   ├── restaurante.py
+│   ├── app.py
+│   ├── datos.py
+│   ├── funciones.py
 │   ├── login.py
 │   ├── menus.py
-│   ├── validaciones.py
+│   ├── prints.py
 │   ├── utilidades.py
-│   ├── datos.py
-│   └── prints.py
+│   └── validaciones.py
 │
-├── README.md
-└── .gitignore
+├── roles/
+│   ├── administrador.py
+│   ├── cliente.py
+│   └── restaurante.py
+│
+├── main.py
+└── README.md
+```
 
+---
 
+# Funcionalidades
 
-📁 Descripción de archivos
----------------main.py-----------------
-Solo ejecuta el sistema con una llamada a iniciar.app() 
+## Cliente
 
+* Inicio de sesión.
+* Visualización de datos personales.
+* Realización de pedidos.
+* Consulta de pedidos en preparación.
+* Confirmación del pedido antes de registrarlo.
 
----------------App.py------------------
-Archivo principal del sistema.
-Se encarga de:
+## Restaurante
 
--iniciar el programa
--mostrar la presentación
--ejecutar el login
--redirigir según el rol del usuario
+* Visualización de datos.
+* Consulta de pedidos pendientes.
+* Cambio de estado a "En preparación".
+* Entrega de pedidos mediante código de entrega.
+* Consulta de facturación utilizando una matriz.
 
+## Administrador
 
----------------prints.py------------
-Contiene funciones relacionadas a:
+* Alta de usuarios.
+* Baja de usuarios.
+* Consulta de usuarios por rol.
+* Visualización de información general del sistema.
 
--mensajes
--títulos
--menús
--presentación visual del sistema
+---
 
+# Persistencia de datos
 
---------------login.py--------------
-Manejo del inicio de sesión:
+Toda la información del sistema se almacena mediante archivos JSON.
 
--validación de usuario
--validación de contraseña
--identificación del rol
+* **usuarios.json** → Usuarios registrados.
+* **catalogo.json** → Productos disponibles.
+* **pedidos.json** → Pedidos realizados.
+* **eliminados.json** → Historial de usuarios eliminados.
 
+Cada modificación realizada desde el sistema se guarda automáticamente antes de regresar al menú principal.
 
--------------menus.py---------------
-Contiene los distintos menús del sistema:
+---
 
--menú cliente
--menú restaurante
--menú administrador
+# Funciones principales
 
+El proyecto implementa las funciones solicitadas por la consigna:
 
+* filtrar_catalogo()
+* calcular_total_pedido()
+* buscar_pedidos()
+* actualizar_estado()
+* obtener_pedidos_a_matriz()
+* filtrar_por_rol()
+* buscar_usuario()
 
----------------validaciones.py-------------
-Funciones reutilizables para validar:
+Estas funciones fueron diseñadas para reutilizar lógica y mantener un código organizado.
 
--nombres
--contraseñas
--rangos numéricos
--códigos
--domicilios
--entradas del usuario
+---
 
+# Organización del proyecto
 
----------------datos.py------------------
-Almacena datos hardcodeados del sistema:
+El sistema fue dividido en módulos para separar responsabilidades.
 
--usuarios
--comidas
--bebidas
--datos de clientes
--datos de restaurantes
+* **roles/** contiene la lógica específica de Cliente, Restaurante y Administrador.
+* **modulos/** contiene la lógica general compartida por todo el sistema.
+* **datos/** almacena la persistencia de la información.
 
-
--------------utilidades.py------------
-Funciones auxiliares reutilizables.
-Ejemplos:
-
--limpiar pantalla
--pausar ejecución
--generar números aleatorios
-
-
--------------cliente.py---------------
-Funciones correspondientes al rol Cliente:
-
--ver datos
--realizar pedidos
--seleccionar comidas y bebidas
--calcular totales
-
-
-------------------restaurante.py----------------------
-Funciones correspondientes al rol Restaurante:
-
--ver datos
--preparar pedidos
--entregar pedidos
-
-
------------------administrador.py-----------------------
-Funciones correspondientes al rol Administrador:
-
--crear usuarios
--borrar usuarios
--visualizar información del sistema
+Esta organización facilita el mantenimiento del código y el trabajo colaborativo.
